@@ -1,0 +1,121 @@
+<div id="buscar" class="mb-5">
+  <div class="row">
+    <form action="/admin//filtrarpagamentos" method="POST">
+      <label for="idCliente" class="mt-2">Cliente</label>
+      <select name="idCliente">
+        <option value="null" selected>...</option>
+        {{#each cliente}}
+        <option value="{{_id}}">{{nome}}</option>
+        {{else}}
+        <option value="null">Nenhum cliente cadastrado</option>
+        {{/each}}
+      </select>
+      <label for="pesquisa">Status pagamento</label>
+      <select name="campo">
+        <option value="0" select>...</option>
+        <option value="1">Finalizado</option>
+        <option value="2">Pendente</option>
+      </select>
+      <label for="pesquisa">Status Serviço</label>
+      <select name="camposervico">
+        <option value="null" select>...</option>
+        <option value="FINALIZADO">FINALIZADO</option>
+        <option value="PENDENTE">PENDENTE</option>
+      </select>
+      <label for="datainicial">Data inicial</label>
+      <input name="datain" type="date" class="">
+      <label for="datafinal">Data final</label>
+      <input name="datafinal" type="date" class="">
+      <button type="submit" class="">Buscar</button>
+    </form>
+  </div>
+  <hr>
+</div>
+<div style="text-align: right;"><a href="/admin/relatorio_pagamento"><button class="btn btn-outline-info">Relatorio</button></a>
+<a href="/admin/relatoriopagamentodetalhado"><button class="btn btn-outline-info">Relatorio Detalhado</button></a></div>
+ <form action="/admin/pagamentos" method="POST">
+<div id="soma">
+  Total: R$ {{soma}}
+  <div><button type="submit" class="btn btn-outline-info">Pagar</button>
+  </div>
+</div>
+
+<div>
+  <table class="table table-bordered mt-5">
+    <thead>
+      <tr>
+       
+       
+        <th><input class="form-check-input" type="checkbox" name="all" value="{{#each orcamentos}}{{_id}} {{/each}}"> Selecionar todos </th>
+        <th scope="col">Numero OS</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Data</th>
+        <th scope="col">Status Serviço</th>
+        <th scope="col">Status Pagamento</th>
+      </tr>
+    </thead>
+      <div>
+        {{#each orcamentos}}
+        <tr>
+          <td><input class="form-check-input" type="checkbox" value="{{_id}}" name="pagar"></td>
+          <th scope="row">{{numeroOS}}</th>
+          <td>{{cliente.nome}}</td>
+          <td>{{data}}</td>
+          <td>{{status}}</td>
+          <td>{{pagamento}}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Exemplo básico">
+              <a href="/admin/orcamentoAberto/{{_id}}" class="btn btn-outline-info">Visualizar</a>
+            </div>
+          </td>
+
+        </tr {{else}} <h4>Ops nada encontrado!</h4>
+        {{/each}}
+      </div>
+      
+    </form>
+    </tbody>
+  </table>
+  
+<style>
+  #buscar {
+
+    margin-bottom: 20px;
+
+  }
+
+  #campo {
+    width: 20%;
+  }
+
+  #datafi {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 20%;
+  }
+
+  #botao {
+    margin-left: 10px;
+    width: 20%;
+
+  }
+
+  #pesquisa {
+    width: 40%;
+  }
+
+  #datas {
+    padding: 10px;
+    align-items: baseline;
+  }
+
+  #camposInput {}
+
+  #dataInicial {
+    margin-left: 20px;
+  }
+
+  #soma {
+    text-align: right;
+  }
+</style>

@@ -1,0 +1,30 @@
+<h3>Serviço</h3>
+{{#each texto}}
+<div class="alert alert-danger" role="alert">
+    {{text}}
+</div>
+{{/each}}
+
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/servico/editar/{{servico._id}}" method="POST">
+            <input type="hidden" name="id_OS" value="{{servico.os}}">
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" class="form-control" autocomplete="off" value="{{servico.descricao}}"/>
+            <label for="horasLabel" class="mt-2">Horas:</label>
+            <input type="text" name="horas" id="horas" class="horas form-control" minlength="5" placeholder="00:00" maxlength="5" onkeyup="maskHoras()" value="{{servico.horas}}"required="true"/>
+            <label for="valorHora" class="mt-2" >Valor Hora:</label>
+            <input type="text" name="valorHora" class="form-control" id="valorHora"required="true" autocomplete="off"value="{{servico.valorHora}}">
+
+            <button type="submit" class=" btn btn-success mt-4">Adicionar</button>
+        </form>
+    </div>
+</div>
+<script>
+    function maskHoras() {
+        var horas = document.getElementById("horas")
+        if (horas.value.length == 2) {
+            horas.value += ":"
+        }
+    }    
+</script>

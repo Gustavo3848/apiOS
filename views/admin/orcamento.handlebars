@@ -1,0 +1,47 @@
+<h3>Novo orçamento:</h3>
+{{#each erros}}
+<div class="alert alert-danger" role="alert">
+    {{text}}
+</div>
+{{/each}}
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/orcamento/novo" method="POST">
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" placeholder="00/00/0000" class="form-control" maxlength="10"
+                onkeyup="maskData()" autocomplete="off">
+            <label for="diaSemana"class="mt-2">Dia da semana</label>
+            <input type="text" name="diaSemana" class="form-control"autocomplete="off">    
+            <label for="cliente"class="mt-2">Cliente:</label>    
+            <select  name="cliente"class="form-control form-control">
+                {{#each cliente}}
+                <option value="{{_id}}">{{nome}}</option>
+                {{else}}
+                <option value="null">Nenhum cliente cadastrado</option>
+                {{/each}}
+            </select>
+            <label for="equipamento" class="mt-2">Equipamento:</label>
+            <input type="text" id="equipamento" name="equipamento" class="form-control" autocomplete="off">
+            <label for="setor" class="mt-2">Setor:</label>
+            <input type="text" id="setor" name="setor" class="form-control" autocomplete="off">
+            <label for="cCusto" class="mt-2">C. Custo:</label>
+            <input type="text" id="cCusto" name="cCusto" class="form-control" autocomplete="off">
+            <label for="codCcusto" class="mt-2">Cód. C. Custo:</label>
+            <input type="text" id="codCcusto" name="codCcusto" class="form-control" autocomplete="off">
+            <label for="solicitante" class="mt-2">Solicitante:</label>
+            <input type="text" id="solicitante" name="solicitante" class="form-control" autocomplete="off">
+            <label for="refCliente" class="mt-2">Ref. Cliente:</label>
+            <input type="text" id="refCliente" name="refCliente" class="form-control" autocomplete="off">
+            <button type="submit" class="btn btn-success mt-4">Abrir</button>
+        </form>
+    </div>
+</div>
+<script>
+    function maskData() {
+        var data = document.getElementById("data")
+        if (data.value.length == 2 || data.value.length == 5) {
+            data.value += "/";
+        }
+    }
+
+</script>

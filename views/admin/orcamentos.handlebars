@@ -1,0 +1,149 @@
+<div id="buscar" class="mb-5">
+
+  <div class="row">
+    <form action="/admin/buscarporcampo" method="POST">
+      <select name="campo">
+        <option value="0"selected>...</option>
+        <option value="1">NºOS</option>
+        <option value="2">Equipamento</option>
+        <option value="3">Setor</option>
+        <option value="4">C. Custo</option>
+        <option value="5">Cód. C. Custo</option>
+        <option value="6">Solicitante</option>
+        <option value="7">Ref. Cliente</option>
+        <option value="8">Serviço</option>
+        <option value="9">Material</option>
+      </select>
+      <input type="text" name="pesquisa">
+      <button type="submit" class="">Buscar</button>
+    </form>
+  </div>
+  <hr>
+  <div class="row">
+    <form action="/admin/buscarcliente" method="POST">
+      <label for="idCliente" class="mt-2">Cliente</label>
+      <select name="idCliente">
+        {{#each cliente}}
+        <option value="{{_id}}">{{nome}}</option>
+        {{else}}
+        <option value="null">Nenhum cliente cadastrado</option>
+        {{/each}}
+      </select>
+      <button type="submit" class="">Buscar</button>
+    </form>
+  </div>
+  <hr>
+  <div class="row">
+    <form action="/admin/buscardata" method="POST">
+      <label for="datainicial">Data inicial</label>
+      <input name="datain" type="date" class="">
+      <label for="datafinal">Data final</label>
+      <input name="datafinal" type="date" class="">
+      <button type="submit" class="">Buscar</button>
+    </form>
+  </div>
+  <hr>
+  <div class="row">
+    <form action="/admin/filtro" method="POST">
+      <label for="idCliente" class="mt-2">Cliente</label>
+      <select name="idCliente">
+        <option value="null"selected>...</option>
+        {{#each cliente}}
+        <option value="{{_id}}">{{nome}}</option>
+        {{else}}
+        <option value="null">Nenhum cliente cadastrado</option>
+        {{/each}}
+      </select>
+       <select name="campo">
+        <option value="0"selected>...</option>
+        <option value="1">Equipamento</option>
+        <option value="2">Setor</option>
+        <option value="3">C. Custo</option>
+        <option value="4">Cód. C. Custo</option>
+        <option value="5">Solicitante</option>
+        <option value="6">Ref. Cliente</option>
+        <option value="7">Status Serviço</option>
+        <option value="8">Status Pagamento</option>
+      </select>
+      <input type="text" name="pesquisa">
+      <label for="datainicial">Data inicial</label>
+      <input name="datain" type="date" class="">
+      <label for="datafinal">Data final</label>
+      <input name="datafinal" type="date" class="">
+      <button type="submit" class="">Buscar</button>
+    </form>
+  </div>
+  <hr>
+  
+</div>
+<div>
+  <table class="table table-bordered mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Numero OS</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Data</th>
+        <th scope="col">Status Serviço</th>
+        <th scope="col">Status Pagamento</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orcamentos}}
+      <tr>
+        <th scope="row">{{numeroOS}}</th>
+        <td>{{cliente.nome}}</td>
+        <td>{{data}}</td>
+
+        <td>{{status}}</td>
+        <td>{{pagamento}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Exemplo básico">
+            <a href="/admin/orcamentoAberto/{{_id}}"><button class="btn btn-outline-info mr-2">Visualizar</button></a>
+            <a href="/admin/editaros/{{_id}}"><button class="btn btn-outline-info mr-2">Editar</button></a>
+            <a href="/admin/delete/{{_id}}"><button class="btn btn-outline-danger mr-2">Deletar</button></a>
+            
+          </div>
+        </td>
+      </tr {{else}} <h4>Ops nada encontrado!</h4>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<style>
+  #buscar {
+
+    margin-bottom: 20px;
+
+  }
+
+  #campo {
+    width: 20%;
+  }
+
+  #datafi {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 20%;
+  }
+
+  #botao {
+    margin-left: 10px;
+    width: 20%;
+
+  }
+
+  #pesquisa {
+    width: 40%;
+  }
+
+  #datas {
+    padding: 10px;
+    align-items: baseline;
+  }
+
+  #camposInput {}
+
+  #dataInicial {
+    margin-left: 20px;
+  }
+</style>

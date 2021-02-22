@@ -1,0 +1,40 @@
+<h3>Novo orçamento:</h3>
+{{#each erros}}
+<div class="alert alert-danger" role="alert">
+    {{text}}
+</div>
+{{/each}}
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/editar/os/{{os._id}}" method="POST">
+            <label for="data">Data atual</label><p>{{os.data}}</p>
+            <label for="novaData">Nova data</label>
+            <input type="date" name="novaData" class="form-control">
+            <label for="diaSemana" class="mt-2">Dia da semana</label>
+            <input type="text" name="diaSemana" class="form-control"value="{{os.diaSemana}}"autocomplete="off">
+            <label for="cliente"class="mt-2">Cliente:</label>    
+            <select  name="cliente"class="form-control form-control">
+                <option value="{{os.cliente._id}}"selected>{{os.cliente.nome}}</option>
+                {{#each clientes}}
+                <option value="{{_id}}">{{nome}}</option>
+                {{else}}
+                <option value="null">Nenhum cliente cadastrado</option>
+                {{/each}}
+            </select>
+            <label for="equipamento" class="mt-2">Equipamento:</label>
+            <input type="text" id="equipamento" name="equipamento" class="form-control" autocomplete="off"value="{{os.equipamento}}">
+            <label for="setor" class="mt-2">Setor:</label>
+            <input type="text" id="setor" name="setor" class="form-control" autocomplete="off"value="{{os.setor}}">
+            <label for="cCusto" class="mt-2">C. Custo:</label>
+            <input type="text" id="cCusto" name="cCusto" class="form-control" autocomplete="off"value="{{os.cCusto}}">
+            <label for="codCcusto" class="mt-2">Cód. C. Custo:</label>
+            <input type="text" id="codCcusto" name="codCcusto" class="form-control" autocomplete="off"value="{{os.codCcusto}}">
+            <label for="solicitante" class="mt-2">Solicitante:</label>
+            <input type="text" id="solicitante" name="solicitante" class="form-control" autocomplete="off"value="{{os.solicitante}}">
+            <label for="refCliente" class="mt-2">Ref. Cliente:</label>
+            <input type="text" id="refCliente" name="refCliente" class="form-control" autocomplete="off"value="{{os.refCliente}}">
+            <button type="submit" class="btn btn-success mt-4">Abrir</button>
+        </form>
+    </div>
+</div>
+

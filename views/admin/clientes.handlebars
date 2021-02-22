@@ -1,0 +1,29 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Cliente</th>
+      <th scope="col">CNPJ</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each clientes}}
+    <tr>
+      <td>{{nome}}</td>
+      <td>{{cnpj}}</td>
+      <td>
+
+        <div class="btn-group" role="group" aria-label="Exemplo básico">
+          <a href="/admin/clienteAberto/{{_id}}"><button class="btn btn-outline-info mr-2">Visualizar</button></a>
+          <a href="/admin/editarcliente/{{_id}}"><button class="btn btn-outline-info mr-2">Editar</button></a>
+          <a href="/admin/deletarCliente/{{_id}}"><button class="btn btn-outline-danger">Deletar</button></a>
+
+        </div>
+        {{else}}
+        <p class="text-muted">Nenhum cliente cadastrado ainda...</p>
+      </td>
+
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>

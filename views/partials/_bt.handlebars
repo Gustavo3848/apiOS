@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <h1 class="display-4">Bem vindo ao meu blog</h1>
+  <p class="lead">Simples blog desenvolvido com node.js e mongoDB</p>
+  <hr class="my-4">
+  <p>I love javascript</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Crie sua conta</a>
+</div>
+<hr>
+<h2>Postagens recentes:</h2>
+{{#each postagens}}
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{titulo}}</h5>
+    <p class="card-text">{{descricao}}</p>
+     <a href="/postagem/{{slug}}" class="card-link">Ler mais...</a>
+    <hr>
+    <small>Categoria: {{categorias.nome}}</small><br>
+    <small>Data de publicação: {{data}}</small>
+  </div>
+</div>
+{{else}}
+<p class="text-muted">Nenhuma postagem encontrada</p>
+{{/each}}

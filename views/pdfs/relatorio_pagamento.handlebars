@@ -1,0 +1,108 @@
+<div id='table' name="table">
+    <img id="logo" src="https://www.imagemhost.com.br/images/2021/01/11/refra.png" alt="refra.png" border="0" />
+    <table id="teste">
+        <tbody>
+            <tr id="cabe">
+                <th scope="row" colspan="1" style="text-align:center;">Clientes</th>
+                <th scope="row" colspan="1" id="totalhoras"style="text-align:center;">Data</th>
+                <th scope="row" colspan="1" style="text-align:center;width: 10%;">nºOS</th>
+                <th scope="row" colspan="1" id="valorserv"style="text-align:center;">Valor</th>
+            
+            </tr>
+            {{#each orcamentos}}
+            <tr>
+                <td colspan="1" style="text-align:justify;">{{cliente.nome}}</td>
+                <td colspan="1"id="totalhoras" style="text-align:center;" >{{data}} {{diaSemana}}</td>
+                <td colspan="1" style="text-align:center; width: 10%;"><div style="word-wrap: break-word;">{{numeroOS}}</div></td>
+                <td colspan="1" style="text-align:left;" id="valorserv">R$ {{valorString}}</td>
+            
+            </tr>
+            {{/each}}
+            <tr>
+                <td colspan="2"id="info">Caso tenha alguma dúvida sobre este orçamento, use as seguintes informações
+                    para contato:</td>
+                <th colspan="1"rowspan="2"style="text-align:center;border-rigth: 2px;">Total</th>
+                <td colspan="1"rowspan="2"style="text-align:center;"><b>R$ {{total}}</b></td>
+
+            </tr>
+            <tr>
+                <td colspan="2"id="info">Renato de Paula – (43) 99129-1264 / (43) 3156-1054</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<style>
+    table {
+        border-collapse: collapse;
+       
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    td {
+        
+        font-size: 8px;
+        padding: 1px;
+    }
+
+    tr {
+        
+      
+    }
+
+    th {
+        font-size: 9px;
+        padding: 1px;
+    }
+
+    #qtd {
+        width: 20%;
+    }
+
+    #valor {
+        width: 20%;
+    }
+
+    #totalhoras {
+        width: 20%;
+    }
+
+    #valorserv {
+        width: 20%;
+        padding-left: 50px;
+    }
+
+    #table {
+        margin: 2mm;
+    }
+
+    #logo {
+        height: 15m;
+        width: 100%;
+    }
+
+    #info {
+        width: 60%;
+        font-size: 7px;
+        text-align: center;
+    }
+    #teste{
+        table-layout: fixed;
+    }
+    #linhasextraservico{
+        padding: 15px;
+    }
+    #cabe{
+        background-color:#3e5190;
+        color: ivory;
+    }
+    #material{
+        background-color:#3e5190;
+        color: ivory;
+    }
+}
+</style>

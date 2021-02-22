@@ -1,0 +1,20 @@
+<h3>Material</h3>
+{{#each texto}}
+<div class="alert alert-danger" role="alert">
+  {{text}}
+</div>
+{{/each}}
+<div class="card">
+    <div class="card-body">
+    <form action="/admin/material/editar/{{material._id}}" method="POST">
+        <input type="hidden" name="idOS" value="{{material.os}}">
+    <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" class="form-control"value="{{material.nome}}">
+    <label for="quantidade" class="mt-2">Quantidade:</label> 
+        <input type="number" id="quantidade" name="quantidade" class="form-control"value="{{material.quantidade}}">
+    <label for="total" class="mt-2">Valor:</label> 
+        <input type="text" id="valor" name="valor" class="form-control" placeholder="0.00"value="{{material.valor}}">    
+    <button type="submit" class=" btn btn-success mt-4">Adicionar</button>    
+</form>
+</div>
+</div>

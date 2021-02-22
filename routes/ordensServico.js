@@ -1,0 +1,10 @@
+const express = require('express');
+const Router = express.Router();
+const ordensServicoController = require('../controllers/ordensServico');
+Router.get('/getall',ordensServicoController.findAll);
+Router.post('/createos',ordensServicoController.createOS);
+Router.post('/removeros',ordensServicoController.removerOS);
+Router.get('/openos/:id',ordensServicoController.openOS);
+Router.get('/selectById/:id',ordensServicoController.selectById);
+Router.post('/updateById/:id',ordensServicoController.updateById);
+module.exports = Router;

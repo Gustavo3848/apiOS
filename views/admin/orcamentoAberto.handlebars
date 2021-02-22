@@ -1,0 +1,101 @@
+<h3>Ordem de Serviço:</h3>
+<div class="card mb-5">
+    <div class="card-body">
+        <input type="hidden" value="{{_id}}">
+        <label for="numeroOS"><b>Numero OS</b></label>
+        <p>{{orcamento.numeroOS}}</p>
+        <hr>
+        <label for="data"><b>Data</b></label>
+        <p>{{orcamento.data}} - {{orcamento.diaSemana}}</p>
+        <hr>
+        <label for="cliente" class="mt-2"><b>Cliente</b></label>
+        <p>{{orcamento.cliente.nome}}</p>
+        <hr>
+        <label for="equipamento" class="mt-2"><b>Equipamento</b></label>
+        <p>{{orcamento.equipamento}}</p>
+        <hr>
+        <label for="setor" class="mt-2"><b>Setor</b></label>
+        <p>{{orcamento.setor}}</p>
+        <hr>
+        <label for="cCusto" class="mt-2"><b>C. Custo</b></label>
+        <p>{{orcamento.cCusto}}</p>
+        <hr>
+        <label for="codCCusto" class="mt-2"><b>Cód. C. Custo</b></label>
+        <p>{{orcamento.codCcusto}}</p>
+        <hr>
+        <label for="solicitante" class="mt-2"><b>Solicitante</b></label>
+        <p>{{orcamento.solicitante}}</p>
+        <hr>
+        <label for="refCliente" class="mt-2"><b>Ref. Cliente</b></label>
+        <p>{{orcamento.refCliente}}</p>
+        <hr>
+        <label for="refCliente" class="mt-2"><b>Total</b></label>
+        <p>R$ {{valor}}</p>
+        <p style="text-align: right;"><b>Status serviço:</b> {{orcamento.status}}</p>
+        <p style="text-align: right;"><b>Status pagamento:</b> {{orcamento.pagamento}}</p>
+        <hr>
+        <label for="servico" class="mt-2"><b>Serviços</b></label><br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Horas</th>
+                    <th scope="col">Valor Hora</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each servicos}}
+                <tr>
+                    <td >{{descricao}}</th>
+                    <td>{{horas}}</td>
+                    <td id="valorHora">R$ {{valorHoraString}}</td>
+                    <td>R$ {{valorString}}</td>
+                    <td><a href="/admin/deletarservico/{{_id}}"><button class="btn btn-outline-danger">Excluir</button></a>
+                    <a href="/admin/editarservico/{{_id}}"><button class="btn btn-outline-info">Editar</button></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <a href="/admin/orcamento/servico/{{orcamento._id}}"><button type="button" class="btn btn-primary">
+                Adicionar
+            </button></a>
+        <hr>
+        <label for="materiais" class="mt-2"><b>Materiais</b></label>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Qtd</th>
+                    <th scope="col">Material</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each materiais}}
+                <tr>
+                    <td >{{quantidade}}</th>
+                    <td>{{nome}}</td>
+                    <td>R$ {{valorString}}</td>
+                    <td><a href="/admin/deletarmaterial/{{_id}}"><button class="btn btn-outline-danger">Excluir</button></a>
+                    <a href="/admin/editarmaterial/{{_id}}"><button class="btn btn-outline-info">Editar</button></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <a href="/admin/orcamento/material/{{orcamento._id}}"><button type="button" class="btn btn-primary">
+                Adicionar
+            </button></a>
+        <hr>
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="/admin/pdforcamento/{{orcamento._id}}/{{valor}}"><button type="button" class="btn btn-outline-info mr-2">Gerar Orçamento</button></a>
+        <a href="/admin/pdfordeminterna/{{orcamento._id}}"><button type="button" class="btn btn-outline-primary mr-2">Gerar Ordem Interna</button></a>
+        <a href="/admin/gravaros/{{orcamento._id}}/{{valor}}"><button type="button" class="btn btn-outline-success mr-2">Gerar Ordem Final com Valor Hora</button></a>
+        <a href="/admin/gravarossemhora/{{orcamento._id}}/{{valor}}"><button type="button" class="btn btn-outline-success mr-2">Gerar Ordem Final sem Valor Hora</button></a>
+        <a href="/admin/pendente/{{orcamento._id}}"><button type="button" class="btn btn-outline-success mr-2">Tornar Pendente</button></a>
+        <a href="/admin/pagamento/{{orcamento._id}}"><button type="button" class="btn btn-outline-success mr-2">Pagar</button></a>
+        </div>
+    </div>
+</div>
